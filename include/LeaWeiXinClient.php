@@ -49,8 +49,8 @@ class LeaWeiXinClient {
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1); // 获取的信息以文件流的形式返回
         // curl_setopt($curl, CURLOPT_COOKIEFILE, 'cookie.txt');
         // curl_setopt($curl, CURLOPT_COOKIEJAR, 'cookie.txt');
-        // curl_setopt($curl, CURLOPT_COOKIEJAR, dirname(__FILE__).'/cookie.txt'); 
-        // curl_setopt($curl, CURLOPT_COOKIEFILE, dirname(__FILE__).'/cookie.txt'); 
+        // curl_setopt($curl, CURLOPT_COOKIEJAR, dirname(__FILE__).'/cookie.txt');
+        // curl_setopt($curl, CURLOPT_COOKIEFILE, dirname(__FILE__).'/cookie.txt');
 
         if($cookie) {
             curl_setopt($curl, CURLOPT_COOKIE, $cookie);
@@ -66,7 +66,7 @@ class LeaWeiXinClient {
         curl_close($curl); // 关闭CURL会话
 
         // 解析HTTP数据流
-        list($header, $body) = explode("\r\n\r\n", $tmpInfo);
+        list($header, $body) = explode("\r\n\r\n", $tmpInfo, 2);
 
         if(!$cookie) {
             // 解析COOKIE
